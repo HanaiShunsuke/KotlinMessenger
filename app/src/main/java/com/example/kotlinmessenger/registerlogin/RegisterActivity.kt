@@ -1,14 +1,15 @@
-package com.example.kotlinmessenger
+package com.example.kotlinmessenger.registerlogin
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlinmessenger.R
+import com.example.kotlinmessenger.messages.LatestMessagesActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -34,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         already_have_account_textView.setOnClickListener {
             Log.d(TAG,"Try to show login activity" )
 
-            val intent = Intent(this,LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
@@ -120,12 +121,17 @@ class RegisterActivity : AppCompatActivity() {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
-        val user = User(uid,username_edittext_register.text.toString(),profileImageUrl)
+        val user = User(
+            uid,
+            username_edittext_register.text.toString(),
+            profileImageUrl
+        )
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d(TAG,"Finally we savaed the user to Firebase Database")
 
-                val intent = Intent(this,LatestMessagesActivity::class.java)
+                val intent = Intent(this,
+                    LatestMessagesActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
@@ -150,3 +156,6 @@ class User(val uid:String,val username: String,val profileImageUrl: String){
 
 //10/14 04終了
 //次は5から https://www.youtube.com/watch?v=-HB__yZqha0&list=PL0dzCUj1L5JE-jiBHjxlmXEkQkum_M3R-&index=5
+
+//10/15 05終了
+//次は6

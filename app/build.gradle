@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+androidExtensions{
+    experimental = true
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -36,7 +40,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.0'
     implementation 'com.google.firebase:firebase-auth:19.1.0'
 
-    implementation 'com.google.firebase:firebase-storage:19.0.1'
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
     implementation 'com.google.firebase:firebase-database:19.1.0'
 
     implementation 'de.hdodenhof:circleimageview:3.0.1'
@@ -44,6 +48,7 @@ dependencies {
 
     implementation "com.xwray:groupie:2.7.0"
     implementation 'com.squareup.picasso:picasso:2.71828'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

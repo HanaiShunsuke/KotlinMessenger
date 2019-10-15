@@ -1,11 +1,13 @@
-package com.example.kotlinmessenger
+package com.example.kotlinmessenger.messages
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
-import android.widget.LinearLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlinmessenger.R
+//import com.example.kotlinmessenger.registerlogin.User
+import com.example.kotlinmessenger.models.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -14,6 +16,7 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_new_message.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
 
@@ -25,19 +28,17 @@ class NewMessageActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Select User"
 
-//        val adapter = GroupAdapter<GroupieViewHolder>()
-//        adapter.add(UserItem())
-//        adapter.add(UserItem())
-//        adapter.add(UserItem())
-//
-//        recyclerview_newmessage.adapter = adapter
-
         fetchUsers()
 
+    }
+
+    companion object{
+        val USER_KEY = "USER_KEY"
     }
     private fun fetchUsers(){
         val ref =FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
+
             override fun onDataChange(p0: DataSnapshot) {
                 val adapter = GroupAdapter<GroupieViewHolder>()
 
@@ -47,8 +48,20 @@ class NewMessageActivity : AppCompatActivity() {
                     if(user != null){
                         adapter.add(UserItem(user))
                     }
-
                 }
+
+                adapter.setOnItemClickListener { item, view ->
+
+                    val userItem = item as UserItem
+
+                    val intent = Intent(view.context,ChatLogActivity::class.java)
+                   // intent.putExtra(USER_KEY,userItem.user.username)
+                    intent.putExtra(USER_KEY,userItem.user)
+                    startActivity(intent)
+
+                    finish()
+                }
+
                 recyclerview_newmessage.adapter = adapter
             }
             override fun onCancelled(p0:DatabaseError){
@@ -74,4 +87,5 @@ class UserItem(val user: User): Item<GroupieViewHolder>(){
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //    }
 //}
+
 
