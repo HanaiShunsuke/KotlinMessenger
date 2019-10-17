@@ -162,3 +162,6 @@ class User(val uid:String,val username: String,val profileImageUrl: String){
 
 //10/16 06終了
 //次は7
+
+//10/17 07終了
+//次は8
