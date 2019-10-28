@@ -25,6 +25,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.title = "登録画面"
         setContentView(R.layout.activity_register)
 
         register_button_register.setOnClickListener {
@@ -70,10 +71,13 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun performRegister(){
         val email = email_edittext_register.text.toString()
+
         val password = password_edittext_register.text.toString()
+        val regex_email = Regex(email)
+        val regex_password = Regex(password)
 
         if(email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this,"Please enter text in email/pw", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"メールアドレスとパスワードを入力してください", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -165,3 +169,6 @@ class User(val uid:String,val username: String,val profileImageUrl: String){
 
 //10/17 07終了
 //次は8
+
+//10/28 08終了
+//次は9
