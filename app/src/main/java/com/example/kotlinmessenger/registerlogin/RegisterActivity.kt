@@ -8,8 +8,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlinmessenger.MyPageActivity
 import com.example.kotlinmessenger.R
-import com.example.kotlinmessenger.messages.LatestMessagesActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -34,14 +34,14 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         already_have_account_textView.setOnClickListener {
-            Log.d(TAG,"Try to show login activity" )
+            //Log.d(TAG,"Try to show login activity" )
 
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
         selectphoto_button_register.setOnClickListener{
-            Log.d(TAG,"Try to show photo selector")
+            //Log.d(TAG,"Try to show photo selector")
 
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
@@ -55,7 +55,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == 0 && resultCode == Activity.RESULT_OK && data != null){
-            Log.d(TAG,"Photo was selected")
+            //Log.d(TAG,"Photo was selected")
 
             selectedPhotoUri = data.data
 
@@ -135,7 +135,7 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d(TAG,"Finally we savaed the user to Firebase Database")
 
                 val intent = Intent(this,
-                    LatestMessagesActivity::class.java)
+                    MyPageActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }

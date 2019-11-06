@@ -7,10 +7,12 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.kotlinmessenger.MyPageActivity
 import com.example.kotlinmessenger.R
 import com.example.kotlinmessenger.models.ChatMessage
 import com.example.kotlinmessenger.models.User
 import com.example.kotlinmessenger.registerlogin.RegisterActivity
+import com.example.kotlinmessenger.trades.ProductListActivity
 import com.example.kotlinmessenger.views.LatestMessageRow
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -46,11 +48,21 @@ class LatestMessagesActivity : AppCompatActivity() {
             startActivity(intent)
         }
         //setupDummyRows()
+
         listenForLatestMessages()
 
         fetchCurrentUser()
 
         verifyUserIsLoggedIn()
+        //setContentView(R.layout.activity_my_page)
+        move_from_chat_to_mypage_button.setOnClickListener {
+            val intent = Intent(this, MyPageActivity::class.java)
+            startActivity(intent)
+        }
+        move_from_chat_to_exhibit_button.setOnClickListener {
+            val intent = Intent(this, ProductListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
