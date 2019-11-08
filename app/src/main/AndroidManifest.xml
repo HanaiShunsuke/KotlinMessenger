@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".trades.ProductExhibitActivity"></activity>
+        <activity android:name=".MypageEditActivity"></activity>
+        <activity android:name=".trades.ProductExhibitActivity" />
         <activity android:name=".trades.ProductListActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".messages.ChatLogActivity">

@@ -12,5 +12,7 @@ class ProductExhibitActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_exhibit)
         val productname = name_textview_product.text.toString()
         val productprice =price_textview_product.text.toString()
+
+
     }
 }

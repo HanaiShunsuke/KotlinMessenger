@@ -1,8 +1,5 @@
 package com.example.kotlinmessenger.models
 
-public class Product{
-    var productname: String? = ""
-    var productprice: String? = ""
-
-
-}
+/*class Product(val id:String,val productname,val,){
+    constructor():this("","","","",-1)
+}*/
