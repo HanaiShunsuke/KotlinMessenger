@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinmessenger.MyPageActivity
 import com.example.kotlinmessenger.R
+import com.example.kotlinmessenger.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -81,23 +82,24 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        Log.d(TAG,"Email is:" + email)
-        Log.d(TAG,"Password: $password")
+        //Log.d(TAG,"Email is:" + email)
+       // Log.d(TAG,"Password: $password")
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener {
                 if(!it.isSuccessful) return@addOnCompleteListener
 
                 //else if successful
-                Log.d(TAG,"Successfully created user with uid: ${it.result?.user?.uid}")
+               // Log.d(TAG,"Successfully created user with uid: ${it.result?.user?.uid}")
 
                 uploadImageToFirebaseStorage()
             }
             .addOnFailureListener {
-                Log.d(TAG,"Failed to create user: ${it.message}")
+                //Log.d(TAG,"Failed to create user: ${it.message}")
                 Toast.makeText(this,"Failed to create user: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
     private fun uploadImageToFirebaseStorage(){
         if(selectedPhotoUri == null){
             //Log.d("RegisterActivity","debug")
@@ -144,11 +146,11 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 }
-
+/*
 class User(val uid:String,val username: String,val profileImageUrl: String){
     constructor() : this("","","")
 }
-
+*/
 
 //10/11 02終了
 //次は3から　https://www.youtube.com/watch?v=86dkYGeXMaU&list=PL0dzCUj1L5JE-jiBHjxlmXEkQkum_M3R-&index=3
