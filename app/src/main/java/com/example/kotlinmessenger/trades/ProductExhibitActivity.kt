@@ -26,6 +26,7 @@ class ProductExhibitActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_exhibit)
         val productname = name_textview_product.text.toString()
         val productprice =price_textview_product.text.toString()
+        supportActionBar?.title = "出品画面"
 
         selectphoto_button_product.setOnClickListener{
             //Log.d(TAG,"Try to show photo selector")
@@ -95,9 +96,10 @@ class ProductExhibitActivity : AppCompatActivity() {
             }
     }
     private fun saveUserToFirebaseDatabase(profileImageUrl: String){
-        val pid = UUID.randomUUID().toString()
+
         val uid = FirebaseAuth.getInstance().uid ?: ""
-        val ref = FirebaseDatabase.getInstance().getReference("/users/product/$uid/$pid")
+        val ref = FirebaseDatabase.getInstance().getReference("/product/$uid/").push()
+        val pid = ref.key!!
 
         val product = Product(
             uid,
