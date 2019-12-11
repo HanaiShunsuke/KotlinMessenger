@@ -9,5 +9,13 @@
         android:title="Sign Out"
         app:showAsAction = "ifRoom"/>
 
+    <item
+        android:id="@+id/app_bar_search"
+        android:orderInCategory="100"
+        app:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ic_search_white"
+        android:title="@string/app_SearchView"
+        app:showAsAction="always"/>
+
 
 </menu>

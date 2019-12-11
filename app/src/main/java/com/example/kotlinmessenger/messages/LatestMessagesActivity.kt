@@ -2,9 +2,11 @@ package com.example.kotlinmessenger.messages
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.kotlinmessenger.MyPageActivity
@@ -20,7 +22,10 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_latest_messages.*
 
-class LatestMessagesActivity : AppCompatActivity() {
+private var search: SearchView?=null
+
+class LatestMessagesActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+
 
     companion object{
         var currentUser: User? = null
@@ -157,6 +162,20 @@ class LatestMessagesActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_menu,menu)
+        search= menu?.findItem(R.id.app_bar_search)?.actionView as SearchView
+        search!!.inputType= InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+        search!!.setOnQueryTextListener(this)
+
+        return true
+
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return false
     }
 }
