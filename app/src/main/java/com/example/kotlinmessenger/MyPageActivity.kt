@@ -1,8 +1,11 @@
 package com.example.kotlinmessenger
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinmessenger.messages.LatestMessagesActivity
 import com.example.kotlinmessenger.models.User
@@ -15,6 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_my_page.*
 
+
 class MyPageActivity : AppCompatActivity() {
     companion object{
         var currentUser: User? = null
@@ -24,6 +28,23 @@ class MyPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
+    //作物を反映
+        val message=intent.getStringExtra("message")
+        val textView =findViewById<TextView>(R.id.produce_mypage_text)
+        textView.text=message
+
+        val data: SharedPreferences =
+            getSharedPreferences(R.id.produce_mypage_text.toString(), Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = data.edit()
+        editor.putInt(R.id.produce_mypage_text.toString(), 1)
+        editor.apply()
+
+
+    //地域を反映
+        val message2=intent.getStringExtra("message2")
+        val textView2 =findViewById<TextView>(R.id.place_mypage_text)
+        textView2.text=message2
+
         move_message_button.setOnClickListener {
             val intent = Intent(this, LatestMessagesActivity::class.java)
             startActivity(intent)
@@ -32,7 +53,12 @@ class MyPageActivity : AppCompatActivity() {
             val intent = Intent(this, ProductListActivity::class.java)
             startActivity(intent)
         }
+        edit_mypage_button.setOnClickListener{
+            val intent =Intent(this,MypageEditActivity::class.java)
+            startActivity(intent)
+        }
         fetchCurrentUser()
+
 
 
 
