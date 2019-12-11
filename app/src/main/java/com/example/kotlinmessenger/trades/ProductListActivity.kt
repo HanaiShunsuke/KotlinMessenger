@@ -31,6 +31,7 @@ class ProductListActivity : AppCompatActivity() {
     companion object{
 
         val TAG = "ProductListActivity"
+        val USER_KEY = "USER KEY"
     }
     //val adapter = GroupAdapter<GroupieViewHolder>()
 
@@ -64,18 +65,30 @@ class ProductListActivity : AppCompatActivity() {
         val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/product/$uid")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
+
             override fun onDataChange(p0: DataSnapshot) {
                 val adapter = GroupAdapter<GroupieViewHolder>()
 
-                p0.children.forEach{
-                    Log.d("NewProduct",it.toString())
+                p0.children.forEach {
+                    Log.d("NewProduct", it.toString())
                     val product = it.getValue(Product::class.java)
-                    Log.d("NewProductnew","currentProduct: ${product?.profileImageUrl}")
+                    Log.d("NewProductnew", "currentProduct: ${product?.profileImageUrl}")
 
-                    if(product != null){
+                    if (product != null) {
                         adapter.add(ProductItem(product))
 
                     }
+                }
+                adapter.setOnItemClickListener { item, view ->
+
+                    val productItem = item as ProductItem
+
+                    val intent = Intent(view.context,ProductDetailsActivity::class.java)
+                    // intent.putExtra(USER_KEY,userItem.user.username)
+                    intent.putExtra(USER_KEY,productItem.product)
+                    startActivity(intent)
+
+                    finish()
                 }
 
                 recyclerview_list.adapter = adapter
@@ -113,6 +126,7 @@ class ProductListActivity : AppCompatActivity() {
 class ProductItem(val product: Product): Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.productname_textview_list.text = product.productname
+        viewHolder.itemView.productprice_textview_list.text = product.productprice
 
         Picasso.get().load(product.profileImageUrl).into(viewHolder.itemView.selectphoto_imageview_product)
     }

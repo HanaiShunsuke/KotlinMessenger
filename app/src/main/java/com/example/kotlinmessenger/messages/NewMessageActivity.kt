@@ -7,10 +7,8 @@ import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MenuItemCompat
 import com.example.kotlinmessenger.R
 import com.example.kotlinmessenger.models.User
 import com.google.firebase.database.DataSnapshot
@@ -87,7 +85,7 @@ class NewMessageActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         return true
 
-        return super.onCreateOptionsMenu(menu)
+        //return super.onCreateOptionsMenu(menu)
     }
     override fun onQueryTextSubmit(query: String?): Boolean {
         return false
