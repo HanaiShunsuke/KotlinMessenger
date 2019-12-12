@@ -25,6 +25,8 @@ class MyPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
+
+        supportActionBar?.title = "マイページ画面"
 //    //作物を反映
 //        val message=intent.getStringExtra("message")
 //        val textView =findViewById<TextView>(R.id.produce_mypage_text)
