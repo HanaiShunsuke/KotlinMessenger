@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlinmessenger.MyPageActivity
 import com.example.kotlinmessenger.R
 import com.example.kotlinmessenger.models.Product
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.activity_my_page.*
 import kotlinx.android.synthetic.main.activity_product_exhibit.*
 import java.util.*
 
@@ -27,6 +29,11 @@ class ProductExhibitActivity : AppCompatActivity() {
         val productname = name_textview_product.text.toString()
         val productprice =price_textview_product.text.toString()
         supportActionBar?.title = "出品画面"
+
+        button_modoru.setOnClickListener {
+            val intent = Intent(this, ProductListActivity::class.java)
+            startActivity(intent)
+        }
 
         selectphoto_button_product.setOnClickListener{
             //Log.d(TAG,"Try to show photo selector")
@@ -110,10 +117,9 @@ class ProductExhibitActivity : AppCompatActivity() {
         )
         ref.setValue(product)
             .addOnSuccessListener {
-                Log.d(TAG,"Finally we savaed the user to Firebase Database")
+                Log.d(TAG,"Finally we saved the user to Firebase Database")
 
-                val intent = Intent(this,
-                    ProductListActivity::class.java)
+                val intent = Intent(this, MyPageActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
