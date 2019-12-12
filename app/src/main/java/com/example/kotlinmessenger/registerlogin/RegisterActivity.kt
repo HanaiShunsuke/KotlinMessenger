@@ -74,6 +74,8 @@ class RegisterActivity : AppCompatActivity() {
         val email = email_edittext_register.text.toString()
 
         val password = password_edittext_register.text.toString()
+        val placename = placename_edittext_register.text.toString()
+        val whatproduct = whatproduct_edittext_register.text.toString()
         val regex_email = Regex(email)
         val regex_password = Regex(password)
 
@@ -130,7 +132,9 @@ class RegisterActivity : AppCompatActivity() {
         val user = User(
             uid,
             username_edittext_register.text.toString(),
-            profileImageUrl
+            profileImageUrl,
+            whatproduct_edittext_register.text.toString(),
+            placename_edittext_register.text.toString()
         )
         ref.setValue(user)
             .addOnSuccessListener {

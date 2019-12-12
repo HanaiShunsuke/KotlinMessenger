@@ -55,14 +55,14 @@
         android:id="@+id/register_button_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button"
         android:text="登録"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/password_edittext_register"
-        app:layout_constraintStart_toStartOf="@+id/password_edittext_register"
-        app:layout_constraintTop_toBottomOf="@+id/password_edittext_register" />
+        app:layout_constraintEnd_toEndOf="@+id/whatproduct_edittext_register"
+        app:layout_constraintStart_toStartOf="@+id/whatproduct_edittext_register"
+        app:layout_constraintTop_toBottomOf="@+id/whatproduct_edittext_register" />
 
     <TextView
         android:id="@+id/already_have_account_textView"
@@ -102,4 +102,31 @@
         app:layout_constraintEnd_toEndOf="@+id/selectphoto_button_register"
         app:layout_constraintStart_toStartOf="@+id/selectphoto_button_register"
         app:layout_constraintTop_toTopOf="@+id/selectphoto_button_register" />
+
+    <EditText
+        android:id="@+id/placename_edittext_register"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_textedit_register_login"
+        android:ems="10"
+        android:hint="住んでいる地域"
+        android:inputType="textPersonName"
+        android:paddingLeft="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/password_edittext_register"
+        app:layout_constraintStart_toStartOf="@+id/password_edittext_register"
+        app:layout_constraintTop_toBottomOf="@+id/password_edittext_register" />
+
+    <EditText
+        android:id="@+id/whatproduct_edittext_register"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_textedit_register_login"
+        android:ems="10"
+        android:hint="何を作っているか(例 じゃがいも，にんじん)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/placename_edittext_register"
+        app:layout_constraintStart_toStartOf="@+id/placename_edittext_register"
+        app:layout_constraintTop_toBottomOf="@+id/placename_edittext_register" />
 </androidx.constraintlayout.widget.ConstraintLayout>

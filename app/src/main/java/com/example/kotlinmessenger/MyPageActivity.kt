@@ -1,11 +1,8 @@
 package com.example.kotlinmessenger
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinmessenger.messages.LatestMessagesActivity
 import com.example.kotlinmessenger.models.User
@@ -28,22 +25,22 @@ class MyPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
-    //作物を反映
-        val message=intent.getStringExtra("message")
-        val textView =findViewById<TextView>(R.id.produce_mypage_text)
-        textView.text=message
+//    //作物を反映
+//        val message=intent.getStringExtra("message")
+//        val textView =findViewById<TextView>(R.id.produce_mypage_text)
+//        textView.text=message
+//
+//        val data: SharedPreferences =
+//            getSharedPreferences(R.id.produce_mypage_text.toString(), Context.MODE_PRIVATE)
+//        val editor: SharedPreferences.Editor = data.edit()
+//        editor.putInt(R.id.produce_mypage_text.toString(), 1)
+//        editor.apply()
 
-        val data: SharedPreferences =
-            getSharedPreferences(R.id.produce_mypage_text.toString(), Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = data.edit()
-        editor.putInt(R.id.produce_mypage_text.toString(), 1)
-        editor.apply()
 
-
-    //地域を反映
-        val message2=intent.getStringExtra("message2")
-        val textView2 =findViewById<TextView>(R.id.place_mypage_text)
-        textView2.text=message2
+//    //地域を反映
+//        val message2=intent.getStringExtra("message2")
+//        val textView2 =findViewById<TextView>(R.id.place_mypage_text)
+//        textView2.text=message2
 
         move_message_button.setOnClickListener {
             val intent = Intent(this, LatestMessagesActivity::class.java)
@@ -70,6 +67,8 @@ class MyPageActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 currentUser = p0.getValue(User::class.java)
                 username_mypage_text.text= currentUser?.username
+                place_mypage_text.text = currentUser?.placename
+                produce_mypage_text.text = currentUser?.whatproduct
                 Picasso.get().load(currentUser?.profileImageUrl).into(mypage_imageview)
                 Log.d("LatestMessages","Current user ${currentUser?.profileImageUrl}")
 
