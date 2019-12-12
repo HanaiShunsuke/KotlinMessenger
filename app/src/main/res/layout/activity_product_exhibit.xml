@@ -56,11 +56,12 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_width="77dp"
+        android:layout_height="27dp"
         android:layout_marginTop="32dp"
+        android:gravity="center_vertical"
         android:text="写真"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -69,8 +70,9 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
         android:layout_marginTop="32dp"
+        android:gravity="center_vertical"
+        android:padding="8dp"
         android:text="商品の名前"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,12 +91,24 @@
 
     <Button
         android:id="@+id/register_button_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="62dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:text="出品する"
+        android:theme="@style/AppTheme.RaisedButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button_modoru"
+        android:layout_width="110dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="戻る"
+        android:theme="@style/AppTheme.RaisedButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
