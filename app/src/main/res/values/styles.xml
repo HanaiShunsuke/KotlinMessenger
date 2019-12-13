@@ -2,6 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,8 +10,8 @@
     </style>
 
     <style name="AppTheme.RaisedButton" parent="Theme.AppCompat.Light">
-        <item name="colorControlHighlight">#FFD464</item>
-        <item name="colorButtonNormal">#FBA848</item>
+        <item name="colorControlHighlight">#d0b887</item>
+        <item name="colorButtonNormal">#FFD464</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
 

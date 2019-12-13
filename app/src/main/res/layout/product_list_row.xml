@@ -10,15 +10,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="12dp"
         android:text="TextView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/productprice_textview_list"
         app:layout_constraintStart_toEndOf="@+id/productphoto_imageview_list"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/productphoto_imageview_list"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -31,9 +33,10 @@
         android:id="@+id/productprice_textview_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/productname_textview_list"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
+        android:text="textview2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/productphoto_imageview_list"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

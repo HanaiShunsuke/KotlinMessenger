@@ -7,8 +7,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageview_latest_message"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -24,14 +24,14 @@
         android:layout_height="wrap_content"
 
         android:layout_marginStart="16dp"
-        tools:text = "UserName"
-
         android:textColor="@android:color/black"
+
+        android:textSize="30sp"
         android:textStyle="bold"
-        android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/message_textview_latest_message"
         app:layout_constraintStart_toEndOf="@+id/imageview_latest_message"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="UserName" />
 
     <TextView
         android:id="@+id/message_textview_latest_message"
@@ -41,7 +41,7 @@
 
         android:layout_marginEnd="8dp"
         android:text="Latest Message"
-        android:textSize="18sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
