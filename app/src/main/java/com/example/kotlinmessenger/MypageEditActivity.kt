@@ -23,11 +23,20 @@ class MypageEditActivity : AppCompatActivity() {
     companion object{
         var currentUser: User? = null
         val TAG = "LatestMessages"
+        var username = ""
+        var profileImageUrl = ""
+        var whatproduct = ""
+        var placename = ""
+        var url =""
+
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_mypage_edit)
+
 
         //val button=findViewById<Button>(R.id.button)
 
@@ -40,7 +49,9 @@ class MypageEditActivity : AppCompatActivity() {
         }
 
         button.setOnClickListener{
-            uploadImageToFirebaseStorage()
+
+            compareuserdata()
+            //uploadImageToFirebaseStorage()
 
 //            val editText = findViewById<EditText>(R.id.editText)
 //            val editText2 = findViewById<EditText>(R.id.editText2)
@@ -81,7 +92,47 @@ class MypageEditActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadImageToFirebaseStorage(){
+    private fun compareuserdata() {
+        val id = FirebaseAuth.getInstance().uid
+        val ref = FirebaseDatabase.getInstance().getReference("users/$id")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                currentUser = p0.getValue(User::class.java)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+
+        if (currentUser?.username != username_edittext_mypageEdit.text.toString() && username_edittext_mypageEdit.text.toString() != ""){
+             username = username_edittext_mypageEdit.text.toString()
+        }else{
+            username = currentUser!!.username
+        }
+//        if (currentUser?.profileImageUrl != mypageedit_imageview.toString()){
+//             profileImageUrl= username_edittext_mypageEdit.toString()
+//        }else{
+//            profileImageUrl= currentUser!!.profileImageUrl
+//        }
+        if(currentUser?.placename != placename_edittext_mypageEdit.text.toString() && placename_edittext_mypageEdit.text.toString() != ""){
+            placename = placename_edittext_mypageEdit.text.toString()
+        }else{
+            placename = currentUser!!.placename
+        }
+        if(currentUser?.whatproduct != whatproduct_edittext_mypageEdit.text.toString() && whatproduct_edittext_mypageEdit.text.toString() != ""){
+            whatproduct = whatproduct_edittext_mypageEdit.text.toString()
+        }else{
+            whatproduct = currentUser!!.whatproduct
+        }
+
+
+
+        uploadImageToFirebaseStorage(username, placename, whatproduct)
+        //Log.d("debugdebug","$placename,$whatproduct")
+    }
+
+    private fun uploadImageToFirebaseStorage(username:String,placename:String,whatproduct:String){
         if(selectedPhotoUri == null){
             //Log.d("RegisterActivity","debug")
             return
@@ -94,29 +145,35 @@ class MypageEditActivity : AppCompatActivity() {
                 Log.d(TAG,"Successfully uploaded image: ${it.metadata?.path}")
 
                 ref.downloadUrl.addOnSuccessListener {
-                    it.toString()
+                    url = it.toString()
                     Log.d(TAG,"File Location: $it")
 
-                    edituser(it.toString())
+
                 }
             }
             .addOnFailureListener{
 
             }
+       if (url != currentUser?.profileImageUrl && url != ""){
+             profileImageUrl = url
+        }else{
+            profileImageUrl= currentUser!!.profileImageUrl
+        }
+       // Log.d("debugdebug2","$placename,$whatproduct")
+        edituser(username,placename,whatproduct, profileImageUrl)
     }
-    private fun edituser(profileImageUrl: String){
+    private fun edituser(username:String,placename:String,whatproduct:String,profileImageUrl: String){
         val id = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("users/$id")
-        //if(username_edittext_mypageEdit.hint == "")
-        val username = username_edittext_mypageEdit.text
-        val whatproduct = whatproduct_edittext_mypageEdit.text
-        val placename = placename_edittext_mypageEdit.text
+
+        //Log.d("debugdebug3","$placename,$whatproduct")
         val user = User(
             id.toString(),
-            username.toString(),
+            username,
             profileImageUrl,
-            whatproduct.toString(),
-            placename.toString()
+            placename,
+            whatproduct
+
         )
 
 
@@ -143,12 +200,16 @@ class MypageEditActivity : AppCompatActivity() {
                 Picasso.get().load(currentUser?.profileImageUrl).into(mypageedit_imageview)
                 Log.d("LatestMessages","Current user ${currentUser?.profileImageUrl}")
 
+
             }
 
             override fun onCancelled(p0: DatabaseError) {
 
             }
         })
+
+
+
     }
 
 
