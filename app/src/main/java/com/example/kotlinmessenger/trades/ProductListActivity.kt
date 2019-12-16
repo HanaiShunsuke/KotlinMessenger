@@ -22,7 +22,6 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import kotlinx.android.synthetic.main.activity_product_exhibit.view.*
 import kotlinx.android.synthetic.main.activity_product_list.*
 import kotlinx.android.synthetic.main.product_list_row.view.*
 
@@ -72,9 +71,10 @@ class ProductListActivity : AppCompatActivity() {
                 p0.children.forEach {
                     Log.d("NewProduct", it.toString())
                     val product = it.getValue(Product::class.java)
-                    Log.d("NewProductnew", "currentProduct: ${product?.profileImageUrl}")
+                    Log.d("NewProductnew", "currentProduct: ${product?.productprice}")
 
                     if (product != null) {
+                        Log.d("debugdebug","debug")
                         adapter.add(ProductItem(product))
 
                     }
@@ -128,7 +128,7 @@ class ProductItem(val product: Product): Item<GroupieViewHolder>(){
         viewHolder.itemView.productname_textview_list.text = product.productname
         viewHolder.itemView.productprice_textview_list.text = product.productprice
 
-        Picasso.get().load(product.profileImageUrl).into(viewHolder.itemView.selectphoto_imageview_product)
+        Picasso.get().load(product.profileImageUrl).into(viewHolder.itemView.productphoto_imageview_list)
     }
     override fun getLayout(): Int {
         return R.layout.product_list_row

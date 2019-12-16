@@ -7,13 +7,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kotlinmessenger.MyPageActivity
 import com.example.kotlinmessenger.R
 import com.example.kotlinmessenger.models.Product
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_my_page.*
 import kotlinx.android.synthetic.main.activity_product_exhibit.*
 import java.util.*
 
@@ -119,7 +117,7 @@ class ProductExhibitActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d(TAG,"Finally we saved the user to Firebase Database")
 
-                val intent = Intent(this, MyPageActivity::class.java)
+                val intent = Intent(this, ProductListActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }

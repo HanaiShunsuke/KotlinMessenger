@@ -17,7 +17,7 @@
         app:layout_constraintStart_toEndOf="@+id/productphoto_imageview_list"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/productphoto_imageview_list"
         android:layout_width="100dp"
         android:layout_height="100dp"
