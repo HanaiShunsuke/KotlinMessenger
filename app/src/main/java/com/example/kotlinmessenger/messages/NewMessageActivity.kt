@@ -35,7 +35,9 @@ class NewMessageActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         supportActionBar?.title = "Select User"
 
+
         fetchUsers()
+        //fetchProduct()
 
     }
 
@@ -52,6 +54,7 @@ class NewMessageActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 p0.children.forEach{
                     Log.d("NewMessage",it.toString())
                     val user = it.getValue(User::class.java)
+                    //fetchProduct(user!!.uid)
                     if(user != null){
                         adapter.add(UserItem(user))
                     }
@@ -77,6 +80,9 @@ class NewMessageActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         })
     }
 
+
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_menu, menu)
         search = menu?.findItem(R.id.app_bar_search)?.actionView as SearchView
@@ -99,15 +105,18 @@ class NewMessageActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 class UserItem(val user: User): Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.username_textview_new_message.text = user.username
+        viewHolder.itemView.placename_newmessage_textview.text = user.placename
+        viewHolder.itemView.whatproduct_newmessage_textview.text = user.whatproduct
 
         Picasso.get().load(user.profileImageUrl).into(viewHolder.itemView.imageview_new_message)
     }
     override fun getLayout(): Int {
         return R.layout.user_row_new_message
     }
-
-
 }
+
+
+
 
 //class CustomAdapter: RecyclerView.Adapter<ViewHolder>{
 //    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

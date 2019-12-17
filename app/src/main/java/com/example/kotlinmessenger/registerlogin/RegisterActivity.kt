@@ -133,8 +133,8 @@ class RegisterActivity : AppCompatActivity() {
             uid,
             username_edittext_register.text.toString(),
             profileImageUrl,
-            whatproduct_edittext_register.text.toString(),
-            placename_edittext_register.text.toString()
+            placename_edittext_register.text.toString(),
+            whatproduct_edittext_register.text.toString()
         )
         ref.setValue(user)
             .addOnSuccessListener {
