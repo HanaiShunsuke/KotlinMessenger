@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.Menu
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinmessenger.R
 import com.example.kotlinmessenger.models.User

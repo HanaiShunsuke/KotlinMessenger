@@ -48,7 +48,7 @@
         android:id="@+id/price_textview_product"
         android:layout_width="400dp"
         android:layout_height="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="値段"
         android:inputType="textPersonName"
@@ -101,8 +101,8 @@
         android:id="@+id/register_button_product"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
         android:text="出品する"
         android:textSize="30sp"
         android:theme="@style/AppTheme.RaisedButton"
@@ -113,8 +113,8 @@
         android:id="@+id/button_modoru"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
         android:text="戻る"
         android:textSize="30sp"
         android:theme="@style/AppTheme.RaisedButton"
@@ -123,29 +123,31 @@
 
     <EditText
         android:id="@+id/productcomment_exhibit_textview"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
+        android:layout_width="390dp"
+        android:layout_height="102dp"
         android:layout_marginTop="32dp"
         android:ems="10"
 
         android:hint="コメント"
         android:inputType="textPersonName"
         android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/desin_gradesion"
         android:text="出品コメント"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price_textview_product"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/price_textview_product" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
