@@ -111,7 +111,8 @@ class ProductExhibitActivity : AppCompatActivity() {
             pid,
             name_textview_product.text.toString(),
             price_textview_product.text.toString(),
-            profileImageUrl
+            profileImageUrl,
+            productcomment_exhibit_textview.text.toString()
         )
         ref.setValue(product)
             .addOnSuccessListener {

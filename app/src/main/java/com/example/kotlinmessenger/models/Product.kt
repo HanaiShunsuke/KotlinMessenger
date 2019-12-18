@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class Product(val uid:String,val pid:String,val productname:String,val productprice:String,val profileImageUrl:String):
+class Product(val uid:String,val pid:String,val productname:String,val productprice:String,val profileImageUrl:String,val productcomment:String):
     Parcelable {
-    constructor():this("","","","","")
+    constructor():this("","","","","","")
 }
